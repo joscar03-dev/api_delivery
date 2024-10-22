@@ -89,9 +89,18 @@ class NegocioResource extends Resource
                     ->label('Hora de Cierre')
                     ->required(),
                 FileUpload::make('imagen')->image()
-                    ->disk('s3')
-                    ->directory('negocios') 
-                    ->visibility('public'),
+                    ->image()
+                    ->disk('public')
+                    ->directory('negocios')
+                    ->visibility('public')
+                    ->imagePreviewHeight('250')
+                    ->loadingIndicatorPosition('left')
+                    ->panelAspectRatio('2:1')
+                    ->panelLayout('integrated')
+                    ->removeUploadedFileButtonPosition('right')
+                    ->uploadButtonPosition('left')
+                    ->uploadProgressIndicatorPosition('left'),
+
             ]);
     }
 

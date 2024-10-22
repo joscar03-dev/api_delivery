@@ -109,9 +109,17 @@ class PlatoResource extends Resource
                             ->label('Hora de Cierre')
                             ->required(),
                         FileUpload::make('imagen')->image()
-                            ->disk('s3')
+                            ->image()
+                            ->disk('public')
                             ->directory('productos')
-                            ->visibility('public'),
+                            ->visibility('public')
+                            ->imagePreviewHeight('250')
+                            ->loadingIndicatorPosition('left')
+                            ->panelAspectRatio('2:1')
+                            ->panelLayout('integrated')
+                            ->removeUploadedFileButtonPosition('right')
+                            ->uploadButtonPosition('left')
+                            ->uploadProgressIndicatorPosition('left'),
                     ]),
                 Select::make('categoria_id')
                     ->relationship('categoria', 'nombre')
