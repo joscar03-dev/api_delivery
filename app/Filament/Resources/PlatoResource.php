@@ -108,7 +108,10 @@ class PlatoResource extends Resource
                         TimePicker::make('hora_cierre')
                             ->label('Hora de Cierre')
                             ->required(),
-                        FileUpload::make('imagen')->image(),
+                        FileUpload::make('imagen')->image()
+                            ->disk('s3')
+                            ->directory('productos')
+                            ->visibility('public'),
                     ]),
                 Select::make('categoria_id')
                     ->relationship('categoria', 'nombre')
