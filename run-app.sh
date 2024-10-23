@@ -15,4 +15,5 @@ php artisan view:cache
 
 # Run any database migrations
 php artisan migrate --force
+php artisan db:seed --class=RolesSeeder
 php artisan db:seed --class=add_to_users_bd
