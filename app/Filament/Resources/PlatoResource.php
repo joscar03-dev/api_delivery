@@ -108,18 +108,7 @@ class PlatoResource extends Resource
                         TimePicker::make('hora_cierre')
                             ->label('Hora de Cierre')
                             ->required(),
-                        FileUpload::make('imagen')->image()
-                            ->image()
-                            ->disk('public')
-                            ->directory('productos')
-                            ->visibility('public')
-                            ->imagePreviewHeight('250')
-                            ->loadingIndicatorPosition('left')
-                            ->panelAspectRatio('2:1')
-                            ->panelLayout('integrated')
-                            ->removeUploadedFileButtonPosition('right')
-                            ->uploadButtonPosition('left')
-                            ->uploadProgressIndicatorPosition('left'),
+                        FileUpload::make('imagen')->image(),
                     ]),
                 Select::make('categoria_id')
                     ->relationship('categoria', 'nombre')
@@ -144,7 +133,18 @@ class PlatoResource extends Resource
                         ];
                     }),
                 TextInput::make('precio')->numeric(),
-                FileUpload::make('imagen')->image(),
+                FileUpload::make('imagen')
+                    ->image()
+                    ->disk('public')
+                    ->directory('productos')
+                    ->visibility('public')
+                    ->imagePreviewHeight('250')
+                    ->loadingIndicatorPosition('left')
+                    ->panelAspectRatio('2:1')
+                    ->panelLayout('integrated')
+                    ->removeUploadedFileButtonPosition('right')
+                    ->uploadButtonPosition('left')
+                    ->uploadProgressIndicatorPosition('left'),
                 Textarea::make('descripcion')->required(),
             ]);
     }

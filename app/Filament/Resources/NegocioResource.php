@@ -16,6 +16,7 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -45,6 +46,7 @@ class NegocioResource extends Resource
                     ->color(function ($record) {
                         return $record->estado === 'Abierto' ? 'success' : 'danger'; // Color verde para abierto, rojo para cerrado
                     }),
+                ImageColumn::make('imagen')
 
             ])
             ->filters([
@@ -88,7 +90,7 @@ class NegocioResource extends Resource
                 TimePicker::make('hora_cierre')
                     ->label('Hora de Cierre')
                     ->required(),
-                FileUpload::make('imagen')->image()
+                FileUpload::make('imagen')
                     ->image()
                     ->disk('public')
                     ->directory('negocios')
@@ -100,6 +102,7 @@ class NegocioResource extends Resource
                     ->removeUploadedFileButtonPosition('right')
                     ->uploadButtonPosition('left')
                     ->uploadProgressIndicatorPosition('left'),
+
 
             ]);
     }
