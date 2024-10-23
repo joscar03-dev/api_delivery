@@ -17,3 +17,5 @@ php artisan view:cache
 php artisan migrate --force
 php artisan db:seed --class=RolesSeeder
 php artisan db:seed --class=add_to_users_bd
+php artisan storage:link
+
