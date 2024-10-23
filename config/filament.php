@@ -1,5 +1,7 @@
 <?php
 
+use Spatie\Permission\Middleware\RoleMiddleware;
+
 return [
 
     /*
@@ -70,5 +72,11 @@ return [
     */
 
     'livewire_loading_delay' => 'default',
+    'auth_middleware' => [
+    'admin' => [
+        RoleMiddleware::class, // Middleware para asegurar que el rol sea el correcto
+    ],
+],
+
 
 ];
